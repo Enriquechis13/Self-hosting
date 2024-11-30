@@ -13,6 +13,7 @@ Vagrant.configure("2") do |config|
       sudo apt install -y apache2
       sudo systemctl enable apache2
       sudo systemctl start apache2
+      cat /var/www/html/index.html
     SHELL
   end
 end
