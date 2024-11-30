@@ -1,0 +1,13 @@
+[[redirects]]
+  from = "/status"
+  to = "/status.html"
+  status = 200
+
+[[headers]]
+  for = "/status.html"
+  [headers.values]
+    Basic-Auth = "sysadmin:risa"
+    for = "/admin/*"
+  [headers.values]
+    Authorization = "Basic YWRtaW46YXNpcg=="
+
