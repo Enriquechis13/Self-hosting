@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Estado del Servidor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Estado del Servidor</h1>
+
+    <h2>Uptime</h2>
+    <pre id="uptime">Cargando...</pre>
+
+    <h2>Memoria</h2>
+    <pre id="memory">Cargando...</pre>
+
+    <h2>Uso de Disco</h2>
+    <pre id="disk">Cargando...</pre>
+
+    <h2>Carga del Sistema</h2>
+    <pre id="load">Cargando...</pre>
+
+    <script>
+        
+        function simulateSystemInfo() {
+
+            document.getElementById('uptime').textContent = 'Sistema en línea desde: ' + new Date(Date.now() - (Math.random() * 1000000000)).toLocaleString();
+            
+            document.getElementById('memory').textContent = `Memoria Total: ${Math.floor(Math.random() * 16)} GB
+Memoria Libre: ${Math.floor(Math.random() * 8)} GB
+Memoria Usada: ${Math.floor(Math.random() * 8)} GB`;
+            
+            document.getElementById('disk').textContent = `Disco Total: 500 GB
+Disco Usado: ${Math.floor(Math.random() * 300)} GB
+Disco Libre: ${Math.floor(Math.random() * 200)} GB`;
+            
+            document.getElementById('load').textContent = `Carga del Sistema:
+1 min:  ${(Math.random() * 2).toFixed(2)}
+5 min:  ${(Math.random() * 1.5).toFixed(2)}
+15 min: ${(Math.random() * 1).toFixed(2)}`;
+        }
+
+
+        simulateSystemInfo();
+    </script>
+</body>
+</html>
