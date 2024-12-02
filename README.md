@@ -145,7 +145,7 @@ A continuación se presentan los resultados obtenidos para las pruebas de carga,
 
 1. **Prueba con 100 usuarios concurrentes y 1000 peticiones**:
 
- ![Imagen hosting](img/100_user_10000.png)
+ ![Imagen hosting](img/100_user_1000.png)
 
 2. **Prueba con 1000 usuarios concurrentes y 10000 peticiones**:
 
