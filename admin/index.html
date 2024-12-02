@@ -50,6 +50,15 @@
     </style>
 </head>
 <body>
+    <div id="auth-modal">
+        <form id="login-form">
+            <h2>Acceso Restringido</h2>
+            <p>Introduce tus credenciales para acceder:</p>
+            <input type="text" id="username" placeholder="Usuario" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+    </div>
 
     <header>
         <h1>Panel de Administración</h1>
@@ -101,6 +110,5 @@
             }
         });
     </script>
-
 </body>
 </html>
