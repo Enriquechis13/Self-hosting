@@ -7,60 +7,49 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fa;
+            overflow-x: hidden;
         }
 
-        pre {
-            background-color: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-
-        #auth-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        #auth-modal form {
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
+        header {
+            background-color: #333;
+            color: white;
             text-align: center;
+            padding: 20px;
         }
 
-        #auth-modal input {
-            margin: 10px 0;
+        main {
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .info {
+            background-color: white;
+            padding: 15px;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #9f9f9f;
+            color: white;
+            text-align: center;
+            margin-top: 50px;
             padding: 10px;
+            position: relative;
+            height: 2%;
             width: 100%;
-            box-sizing: border-box;
-        }
-
-        #auth-modal button {
-            padding: 10px 20px;
+            bottom: 0;
         }
     </style>
 </head>
 <body>
-    <div id="auth-modal">
-        <form id="login-form">
-            <h2>Acceso Restringido</h2>
-            <p>Introduce tus credenciales para acceder:</p>
-            <input type="text" id="username" placeholder="Usuario" required>
-            <input type="password" id="password" placeholder="Contraseña" required>
-            <button type="submit">Iniciar Sesión</button>
-        </form>
-    </div>
 
     <header>
         <h1>Panel de Administración</h1>
@@ -76,7 +65,21 @@
             <h2>Configuración</h2>
             <p>Modificar la configuración del sistema.</p>
         </section>
+
+        <section class="info">
+            <h2>Informes</h2>
+            <p>Generar informes y análisis de datos.</p>
+        </section>
+
+        <section class="info">
+            <h2>Soporte</h2>
+            <p>Acceder al centro de soporte para ayudar a los usuarios.</p>
+        </section>
     </main>
+
+    <footer>
+        <p>&copy; 2024 Servidor Enrique | Todos los derechos reservados</p>
+    </footer>
 
     <script>
         const validUsers = [
@@ -98,5 +101,6 @@
             }
         });
     </script>
+
 </body>
 </html>
