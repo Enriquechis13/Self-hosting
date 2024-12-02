@@ -5,51 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f7fa;
-            overflow-x: hidden;
-        }
-
-        header {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        main {
-            padding: 20px;
-        }
-
-        h2 {
-            color: #333;
-        }
-
-        .info {
-            background-color: white;
-            padding: 15px;
-            border: 1px solid #ddd;
-            margin-bottom: 15px;
-            border-radius: 5px;
-        }
-
-        footer {
-            background-color: #9f9f9f;
-            color: white;
-            text-align: center;
-            margin-top: 50px;
-            padding: 10px;
-            position: relative;
-            height: 2%;
-            width: 100%;
-            bottom: 0;
-        }
+        /* Estilos similares a los de /status */
     </style>
 </head>
 <body>
+    <div id="auth-modal">
+        <form id="login-form">
+            <h2>Acceso Restringido</h2>
+            <p>Introduce tus credenciales para acceder:</p>
+            <input type="text" id="username" placeholder="Usuario" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+    </div>
 
     <header>
         <h1>Panel de Administración</h1>
@@ -65,21 +33,27 @@
             <h2>Configuración</h2>
             <p>Modificar la configuración del sistema.</p>
         </section>
-
-        <section class="info">
-            <h2>Informes</h2>
-            <p>Generar informes y análisis de datos.</p>
-        </section>
-
-        <section class="info">
-            <h2>Soporte</h2>
-            <p>Acceder al centro de soporte para ayudar a los usuarios.</p>
-        </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Servidor Enrique | Todos los derechos reservados</p>
-    </footer>
+    <script>
+        const validUsers = [
+            { username: "admin", password: "asir" }
+        ];
 
+        document.getElementById("login-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            const isValid = validUsers.some(user => user.username === username && user.password === password);
+
+            if (isValid) {
+                alert("Acceso concedido");
+                document.getElementById("auth-modal").style.display = "none";
+            } else {
+                alert("Credenciales incorrectas");
+            }
+        });
+    </script>
 </body>
 </html>
