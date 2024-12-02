@@ -7,6 +7,6 @@ export const options = {
 };
 
 export default function () {
-  http.get('https://storied-palmier-39d9a4.netlify.app');
+  http.get('https://emurochisp.netlify.app');
   sleep(1)
 }
