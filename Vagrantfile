@@ -14,6 +14,29 @@ Vagrant.configure("2") do |config|
       sudo systemctl enable apache2
       sudo systemctl start apache2
 
+      sudo chown www-data:www-data /var/www/html/index.html
+      sudo chmod 644 /var/www/html/index.html
+
+      sudo nano /etc/apache2/sites-available/000-default.conf
+      sudo nano /var/www/html/.htaccess
+      ErrorDocument 404 /errores/404.html
+      sudo mkdir -p /var/www/html/errores
+      sudo nano /var/www/html/errores/404.html
+
+      mkdir -p /vagrant/admin/
+      mkdir -p /vagrant/status
+
+      echo  /vagrant/admin/index.html
+      echo  /vagrant/status/index.html
+      echo  /vagrant/status/404.html
+
+      sudo chown -R www-data:www-data /var/www/html/admin
+      sudo chmod -R 755 /var/www/html/admin
+      sudo systemctl restart apache2
+
+      sudo a2enmod auth_basic
+      sudo a2enmod authz_core
+
     SHELL
   end
 end
