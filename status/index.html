@@ -76,34 +76,9 @@
     <pre id="load">Cargando...</pre>
 
     <script>
-<<<<<<< HEAD
-                const validUsers = [
-            { username: "sysadmin", password: "risa" }
-        ];
-
-
-        document.getElementById("login-form").addEventListener("submit", (event) => {
-            event.preventDefault();
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-
-            const isValid = validUsers.some(user => user.username === username && user.password === password);
-
-            if (isValid) {
-                alert("Acceso concedido");
-                document.getElementById("auth-modal").style.display = "none";
-                simulateSystemInfo();
-            } else {
-                alert("Credenciales incorrectas");
-            }
-        });
-        
-        function simulateSystemInfo() {
-=======
         const validUsers = [
             { username: "sysadmin", password: "risa" }
         ];
->>>>>>> 013516cb869afcaf769cb9b45b5acec9bd71ae40
 
 
         document.getElementById("login-form").addEventListener("submit", (event) => {
