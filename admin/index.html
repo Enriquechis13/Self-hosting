@@ -35,7 +35,7 @@
             margin-bottom: 15px;
             border-radius: 5px;
         }
-
+        
         footer {
             background-color: #9f9f9f;
             color: white;
@@ -47,9 +47,55 @@
             width: 100%;
             bottom: 0;
         }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        #auth-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #auth-modal form {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        #auth-modal input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #auth-modal button {
+            padding: 10px 20px;
+        }
     </style>
 </head>
 <body>
+    <div id="auth-modal">
+        <form id="login-form">
+            <h2>Acceso Restringido</h2>
+            <p>Introduce tus credenciales para acceder:</p>
+            <input type="text" id="username" placeholder="Usuario" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+    </div>
 
     <header>
         <h1>Panel de Administración</h1>
@@ -81,5 +127,25 @@
         <p>&copy; 2024 Servidor Enrique | Todos los derechos reservados</p>
     </footer>
 
+    <script>
+        const validUsers = [
+            { username: "admin", password: "asir" }
+        ];
+
+        document.getElementById("login-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            const isValid = validUsers.some(user => user.username === username && user.password === password);
+
+            if (isValid) {
+                alert("Acceso concedido");
+                document.getElementById("auth-modal").style.display = "none";
+            } else {
+                alert("Credenciales incorrectas");
+            }
+        });
+    </script>
 </body>
 </html>

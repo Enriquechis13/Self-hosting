@@ -1,4 +1,4 @@
-# Self-hostin
+# Self-hosting
 
 El objetivo de esta práctica es realizar hosting en servidores propios. 
 La practica la he realizado con `Netlify` y `Vagrant`.
@@ -7,7 +7,7 @@ La practica la he realizado con `Netlify` y `Vagrant`.
 
 Es un proveedor de alojamiento que puedes utilizar para sitios web estáticos o aplicaciones web.
 
- ![Imagen hosting](img/PONERNETLIFY)
+ ![Imagen hosting](img/Netlify_logo.png)
 
 ## Requerimientos
 
@@ -105,9 +105,63 @@ He incluido una imagen llamada `logo.png` en el proyecto, que se puede descargar
 - Esta imagen puede ser descargada accediendo a la URL `https://emurochisp.netlify.app/logo.png`.
 - He utilizado esta imagen para realizar pruebas de rendimiento y descarga.
 
-### 4. Administración
+### 4. Proteccion de paginas
+Este proyecto incluye dos páginas protegidas mediante autenticación básica implementada en el lado del cliente usando JavaScript. Las páginas protegidas son:
 
-### 5. Status
+- **`/admin`**: Panel de administración.
+- **`/status`**: Estado del servidor.
+
+He decidió implementar un sistema de autenticación directamente en las páginas HTML mediante JavaScript debido a las limitaciones de Netlify Identity para este caso específico. 
+
+Netlify Identity requiere que el sitio esté configurado con su infraestructura y que las solicitudes de autenticación y autorización se realicen contra su API, lo cual no era factible para nuestro propósito.
+
+#### 4.1 Proceso de Autenticación
+
+1. **Credenciales Predefinidas**  
+
+   Cada página tiene un sistema básico que compara las credenciales ingresadas por el usuario con un conjunto de credenciales predefinidas.
+
+   - Para la página `/admin`:
+     - Usuario: `admin`
+     - Contraseña: `asir`
+   - Para la página `/status`:
+     - Usuario: `sysadmin`
+     - Contraseña: `risa`
+
+2. **Formulario Modal de Login** 
+
+   Al cargar cualquiera de las dos páginas, se muestra un formulario emergente (modal) que solicita al usuario introducir sus credenciales. Si las credenciales son correctas, se desbloquea el contenido de la página.
+
+3. **Validación con JavaScript** 
+
+   La validación de credenciales se realiza directamente en el navegador utilizando JavaScript. Un ejemplo del código para la validación es el siguiente:
+
+### 5. Codigo del proceso de autenticación
+
+El código de autenticación se diseñó para cumplir con los requisitos específicos del ejercicio, que solicita dos áreas protegidas con credenciales definidas de antemano.
+El siguiente codigo es utilizando individualmente por cada pagina:
+
+   ```javascript
+   const validUsers = [
+       { username: "admin", password: "asir" },
+       { username: "sysadmin", password: "risa" }
+   ];
+
+   document.getElementById("login-form").addEventListener("submit", (event) => {
+       event.preventDefault();
+       const username = document.getElementById("username").value;
+       const password = document.getElementById("password").value;
+
+       const isValid = validUsers.some(user => user.username === username && user.password === password);
+
+       if (isValid) {
+           alert("Acceso concedido");
+           document.getElementById("auth-modal").style.display = "none";
+       } else {
+           alert("Credenciales incorrectas");
+         }
+       });
+   ```
 
 ### 6. Prueba de Rendimiento
 
@@ -145,11 +199,11 @@ A continuación se presentan los resultados obtenidos para las pruebas de carga,
 
 1. **Prueba con 100 usuarios concurrentes y 1000 peticiones**:
 
- ![Imagen hosting](img/100_user_10000.png)
+ ![Imagen hosting](img/100_user_1000.png)
 
 2. **Prueba con 1000 usuarios concurrentes y 10000 peticiones**:
 
- ![Imagen hosting](img/1000_user_100000.png)
+ ![Imagen hosting](img/1000_user_10000.png)
 
 #### 6.3. Conclusión
 
@@ -161,6 +215,8 @@ Estas pruebas generan un volumen de tráfico inusualmente alto en un corto perí
 
 Por lo tanto, las pruebas de carga masiva tienden a fallar debido a estas limitaciones inherentes a la arquitectura de `Netlify`.
 
-### 7. Web
+### 7. Self hosting
 
-este ha sido el trabajo realizado para la practica Self
+Una vez realizados todos los pasos y configurada la pagina completamente he obtenido la siguiente pagina:
+
+- [Netlify - Mi pagina](https://emurochisp.netlify.app/)

@@ -10,15 +10,57 @@
             margin: 0 auto;
             padding: 20px;
         }
+
         pre {
             background-color: #f4f4f4;
             padding: 10px;
             border-radius: 5px;
             overflow-x: auto;
         }
+
+        #auth-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #auth-modal form {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        #auth-modal input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #auth-modal button {
+            padding: 10px 20px;
+        }
     </style>
 </head>
 <body>
+    <div id="auth-modal">
+        <form id="login-form">
+            <h2>Acceso Restringido</h2>
+            <p>Introduce tus credenciales para acceder:</p>
+            <input type="text" id="username" placeholder="Usuario" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+    </div>
+
     <h1>Estado del Servidor</h1>
 
     <h2>Uptime</h2>
@@ -34,27 +76,66 @@
     <pre id="load">Cargando...</pre>
 
     <script>
+<<<<<<< HEAD
+                const validUsers = [
+            { username: "sysadmin", password: "risa" }
+        ];
+
+
+        document.getElementById("login-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            const isValid = validUsers.some(user => user.username === username && user.password === password);
+
+            if (isValid) {
+                alert("Acceso concedido");
+                document.getElementById("auth-modal").style.display = "none";
+                simulateSystemInfo();
+            } else {
+                alert("Credenciales incorrectas");
+            }
+        });
         
         function simulateSystemInfo() {
+=======
+        const validUsers = [
+            { username: "sysadmin", password: "risa" }
+        ];
+>>>>>>> 013516cb869afcaf769cb9b45b5acec9bd71ae40
 
+
+        document.getElementById("login-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            const isValid = validUsers.some(user => user.username === username && user.password === password);
+
+            if (isValid) {
+                alert("Acceso concedido");
+                document.getElementById("auth-modal").style.display = "none";
+                simulateSystemInfo();
+            } else {
+                alert("Credenciales incorrectas");
+            }
+        });
+
+
+        function simulateSystemInfo() {
             document.getElementById('uptime').textContent = 'Sistema en línea desde: ' + new Date(Date.now() - (Math.random() * 1000000000)).toLocaleString();
-            
             document.getElementById('memory').textContent = `Memoria Total: ${Math.floor(Math.random() * 16)} GB
 Memoria Libre: ${Math.floor(Math.random() * 8)} GB
 Memoria Usada: ${Math.floor(Math.random() * 8)} GB`;
-            
             document.getElementById('disk').textContent = `Disco Total: 500 GB
 Disco Usado: ${Math.floor(Math.random() * 300)} GB
 Disco Libre: ${Math.floor(Math.random() * 200)} GB`;
-            
             document.getElementById('load').textContent = `Carga del Sistema:
 1 min:  ${(Math.random() * 2).toFixed(2)}
 5 min:  ${(Math.random() * 1.5).toFixed(2)}
 15 min: ${(Math.random() * 1).toFixed(2)}`;
         }
-
-
-        simulateSystemInfo();
     </script>
 </body>
 </html>
